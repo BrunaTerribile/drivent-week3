@@ -10,8 +10,13 @@ async function getHotels(){
   return hotels;
 }
 
-async function getHotelById(){
-    
+async function getHotelById(id: number){
+  const result = await hotelRepository.getHotelById(id)
+  if (!result) {
+      throw { message: "Hotel not found." }
+  }
+
+  return result;
 }
 
 const hotelService = {

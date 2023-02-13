@@ -1,16 +1,6 @@
 import app, { init } from "@/app";
-<<<<<<< HEAD
-import httpStatus from "http-status";
-import supertest from "supertest";
-import { cleanDb } from "../helpers";
-
-beforeAll(async () => {
-  await init();
-=======
-import { prisma } from "@/config";
 import faker from "@faker-js/faker";
 import { TicketStatus } from "@prisma/client";
-import e from "express";
 import httpStatus from "http-status";
 import * as jwt from "jsonwebtoken";
 import supertest from "supertest";
@@ -33,40 +23,12 @@ beforeAll(async () => {
 });
 
 beforeEach(async () => {
->>>>>>> 3d3368aea83aaf592faf53be06ff8159b85eccde
   await cleanDb();
 });
 
 const server = supertest(app);
 
 describe("GET /hotels", () => {
-<<<<<<< HEAD
-    it("should respond with status 404 if there is no hotel", async () => {
-      const response = await server.get("/hotels");
-  
-      expect(response.status).toBe(httpStatus.NOT_FOUND);
-    });
-
-    it("should respond with status 200 and hotel data if there is a hotel", async () => {
-        const response = await server.get("/hotels");
-    
-        expect(response.status).toBe(httpStatus.OK);
-    });
-
-    it("should respond with status 401 if user is invalid", async () => {
-        const response = await server.get("/hotels");
-    
-        expect(response.status).toBe(httpStatus.UNAUTHORIZED);
-    });
-
-    it("should respond with status 401 if user is invalid", async () => {
-        const response = await server.get("/hotels");
-    
-        expect(response.status).toBe(httpStatus.UNAUTHORIZED);
-    });
-
-});
-=======
   it("should respond with status 401 if no token is given", async () => {
     const response = await server.get("/hotels");
 
@@ -285,4 +247,3 @@ describe("GET /hotels/:hotelId", () => {
   });
 });
 
->>>>>>> 3d3368aea83aaf592faf53be06ff8159b85eccde
